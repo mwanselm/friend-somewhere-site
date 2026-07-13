@@ -15,10 +15,12 @@
     --coral: #b83b47;
     --coral-dark: #7a2530;
     --orange: #d9701f;
-    --orange-dark: #a6540a;
+    --orange-dark: #964a09;
   }
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+
   body{
     margin:0;
     background:
@@ -30,17 +32,27 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+
   body::before{
     content:"";
     position:fixed; inset:0;
     pointer-events:none;
-    opacity:.3;
+    opacity:.1;
     mix-blend-mode:multiply;
     background-image:radial-gradient(circle, rgba(44,26,16,0.5) 1px, transparent 1.3px);
     background-size:5px 5px;
   }
+
   a{color:inherit;}
-  .envelope{ position:relative; max-width:900px; margin:36px auto 0; padding:0 4vw; }
+
+  /* ===== HERO ===== */
+  .envelope{
+    position:relative;
+    max-width:900px;
+    margin:36px auto 0;
+    padding:0 4vw;
+  }
+
   .envelope-flap{
     position:relative;
     background:
@@ -53,8 +65,13 @@
     box-shadow:0 20px 40px -20px rgba(44,26,16,0.4);
     animation:reveal 1.1s cubic-bezier(.2,.7,.3,1) both;
   }
-  @keyframes reveal{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  @keyframes reveal{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
   @media (prefers-reduced-motion: reduce){ .envelope-flap{animation:none;} }
+
   .band-name{
     font-family:'Luckiest Guy', cursive;
     font-weight:400;
@@ -66,74 +83,240 @@
     -webkit-text-stroke:1.5px var(--ink);
     text-shadow: 3px 3px 0 var(--orange);
   }
-  .tagline{ font-style:italic; font-size:1.2rem; color:var(--ink); letter-spacing:.5px; margin:0 0 8px; font-weight:600; }
-  .flourish-row{ display:flex; align-items:center; justify-content:center; gap:14px; opacity:.9; }
+
+  .tagline{
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--ink);
+    letter-spacing:.5px;
+    margin:0 0 8px;
+    font-weight:600;
+  }
+
+  .flourish-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    opacity:.9;
+  }
   .flourish-row svg{width:70px;height:auto;fill:none;stroke:var(--coral-dark);stroke-width:1.6;}
+
   .skull-mark{width:56px;height:56px;opacity:.95;}
   .skull-mark svg{width:100%;height:100%;}
+
   .stamp{
-    position:absolute; top:22px; right:6vw; width:116px; background:var(--paper); padding:10px;
-    border:1px solid rgba(44,26,16,.4); transform:rotate(4deg); box-shadow:0 6px 14px -6px rgba(44,26,16,.5);
+    position:absolute;
+    top:22px; right:6vw;
+    width:116px;
+    background:var(--paper);
+    padding:10px;
+    border:1px solid rgba(44,26,16,.4);
+    transform:rotate(4deg);
+    box-shadow:0 6px 14px -6px rgba(44,26,16,.5);
     -webkit-mask-image:radial-gradient(circle 4.5px at 8px 8px, transparent 98%, black 100%),
                         radial-gradient(circle 4.5px at 8px 100%, transparent 98%, black 100%);
   }
   .stamp-inner{ border:1.5px dashed var(--coral-dark); padding:10px 6px; text-align:center; }
   .stamp-inner .skull-mark{margin:0 auto 4px;}
-  .stamp-label{ font-family:'Courier Prime', monospace; font-size:.55rem; letter-spacing:1.5px; color:var(--coral-dark); text-transform:uppercase; }
+  .stamp-label{
+    font-family:'Courier Prime', monospace;
+    font-size:.55rem;
+    letter-spacing:1.5px;
+    color:var(--coral-dark);
+    text-transform:uppercase;
+  }
+
   .postmark{
-    position:absolute; top:98px; right:calc(6vw + 32px); width:98px; height:98px;
-    border:1.5px solid rgba(44,26,16,.55); border-radius:50%; transform:rotate(-14deg); opacity:.7;
+    position:absolute;
+    top:98px; right:calc(6vw + 32px);
+    width:98px; height:98px;
+    border:1.5px solid rgba(44,26,16,.55);
+    border-radius:50%;
+    transform:rotate(-14deg);
+    opacity:.7;
     display:flex; align-items:center; justify-content:center;
   }
-  .postmark::before{ content:""; position:absolute; inset:6px; border:1px solid rgba(44,26,16,.55); border-radius:50%; }
-  .postmark span{ font-family:'Courier Prime', monospace; font-size:.62rem; letter-spacing:2px; color:var(--ink); text-align:center; line-height:1.5; font-weight:700; }
-  section{ max-width:760px; margin:0 auto; padding:56px 6vw; }
-  .eyebrow{
-    font-family:'Courier Prime', monospace; font-size:.75rem; letter-spacing:3px; text-transform:uppercase;
-    color:var(--coral-dark); font-weight:700; border-bottom:1px solid rgba(122,37,48,.35); padding-bottom:10px; margin-bottom:26px;
+  .postmark::before{
+    content:""; position:absolute; inset:6px;
+    border:1px solid rgba(44,26,16,.55); border-radius:50%;
   }
-  .insta-cta{ display:flex; justify-content:center; padding:6px 0 10px; }
+  .postmark span{
+    font-family:'Courier Prime', monospace;
+    font-size:.62rem; letter-spacing:2px;
+    color:var(--ink); text-align:center; line-height:1.5;
+    font-weight:700;
+  }
+
+  /* ===== SECTIONS ===== */
+  section{ max-width:760px; margin:0 auto; padding:56px 6vw; }
+
+  .eyebrow{
+    font-family:'Courier Prime', monospace;
+    font-size:.75rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--coral-dark);
+    font-weight:700;
+    border-bottom:1px solid rgba(122,37,48,.35);
+    padding-bottom:10px;
+    margin-bottom:26px;
+  }
+
+  /* ===== INSTAGRAM CTA ===== */
+  .insta-cta{
+    display:flex;
+    justify-content:center;
+    padding:6px 0 10px;
+  }
   .insta-btn{
-    display:inline-flex; align-items:center; gap:12px; background:var(--ink); color:var(--paper); text-decoration:none;
-    padding:16px 28px; border-radius:999px; font-family:'Cormorant Garamond', serif; font-size:1.15rem; font-weight:600;
-    letter-spacing:.5px; box-shadow:0 8px 18px -8px rgba(44,26,16,.5); transition:transform .2s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:999px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:.5px;
+    box-shadow:0 8px 18px -8px rgba(44,26,16,.5);
+    transition:transform .2s ease;
   }
   .insta-btn:hover{ transform:translateY(-2px); }
   .insta-btn svg{ width:22px; height:22px; flex-shrink:0; }
-  .show{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 18px; padding:18px 0; border-bottom:1px solid rgba(44,26,16,.2); }
-  .show:last-of-type{border-bottom:none;}
-  .show-date{ font-family:'Courier Prime', monospace; font-size:.9rem; font-weight:700; color:var(--orange-dark); min-width:100px; }
-  .show-main{ flex:1; min-width:200px; }
-  .show-venue{ font-size:1.25rem; font-weight:600; }
-  .show-with{ font-style:italic; color:var(--ink); opacity:.85; font-size:1.02rem; }
-  .show-city{ font-style:italic; color:var(--coral-dark); font-size:1.02rem; }
-  .show-tix{
-    display:inline-block; margin-top:4px; font-family:'Courier Prime', monospace; font-size:.8rem; letter-spacing:1px;
-    text-transform:uppercase; color:var(--paper); background:var(--coral); padding:8px 16px; border-radius:999px; text-decoration:none; font-weight:700;
+
+  /* ===== SHOWS ===== */
+  .show{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:6px 18px;
+    padding:18px 0;
+    border-bottom:1px solid rgba(44,26,16,.2);
   }
-  .no-shows{ font-size:1.15rem; line-height:1.7; padding:10px 0 6px; }
+  .show:last-of-type{border-bottom:none;}
+  .show-date{
+    font-family:'Courier Prime', monospace;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--orange-dark);
+    min-width:100px;
+  }
+  .show-main{ flex:1; min-width:200px; }
+  .show-venue{ font-size:1.3rem; font-weight:700; }
+  .show-with{ font-style:italic; color:var(--ink); opacity:1; font-size:1.05rem; font-weight:600; }
+  .show-city{ font-style:normal; color:var(--coral-dark); font-size:1.02rem; font-weight:700; letter-spacing:.3px; }
+  .show-tix{
+    display:inline-block;
+    margin-top:4px;
+    font-family:'Courier Prime', monospace;
+    font-size:.8rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--paper);
+    background:var(--coral-dark);
+    padding:8px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+  }
+
+  .no-shows{
+    font-size:1.15rem;
+    line-height:1.7;
+    padding:10px 0 6px;
+  }
+
+  /* ===== CONTACT ===== */
   .contact-cta{
-    text-align:center; background:rgba(217,112,31,0.08); border:1px dashed rgba(122,37,48,.4);
-    border-radius:16px; padding:32px 24px; margin-top:24px;
+    text-align:center;
+    background:rgba(217,112,31,0.08);
+    border:1px dashed rgba(122,37,48,.4);
+    border-radius:16px;
+    padding:32px 24px;
+    margin-top:24px;
   }
   .contact-cta p{ font-size:1.15rem; margin:0 0 16px; }
   .contact-email{
-    display:inline-block; font-family:'Courier Prime', monospace; font-size:1rem; font-weight:700; color:var(--ink);
-    background:var(--paper); border:1.5px solid var(--ink); padding:10px 20px; border-radius:8px; text-decoration:none; letter-spacing:.5px;
+    display:inline-block;
+    font-family:'Courier Prime', monospace;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--paper);
+    border:1.5px solid var(--ink);
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    letter-spacing:.5px;
   }
+
   footer{
-    text-align:center; padding:40px 6vw 60px; font-family:'Courier Prime', monospace; font-size:.7rem;
-    letter-spacing:2px; color:var(--coral-dark); text-transform:uppercase; opacity:.8;
+    text-align:center;
+    padding:40px 6vw 60px;
+    font-family:'Courier Prime', monospace;
+    font-size:.7rem;
+    letter-spacing:2px;
+    color:var(--coral-dark);
+    text-transform:uppercase;
+    opacity:.8;
   }
+
   @media (max-width:640px){
     .stamp{position:static; transform:rotate(-2deg); margin:0 auto 18px; -webkit-mask-image:none;}
     .postmark{display:none;}
     .envelope-flap{padding:44px 6vw 44px;}
     .show-city{margin-left:0;}
   }
+
+  /* ===== VIDEO PARALLAX ===== */
+  .video-parallax{
+    position:relative;
+    width:100%;
+    height:60vh;
+    min-height:340px;
+    overflow:hidden;
+    margin:0;
+  }
+  .video-bg{
+    position:absolute;
+    inset:-15% -5%;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    will-change:transform;
+  }
+  .video-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(44,26,16,.3), rgba(44,26,16,.55));
+  }
+  .video-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:84px; height:84px; border-radius:50%;
+    background:var(--coral); border:3px solid var(--paper);
+    color:var(--paper); font-size:1.6rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -8px rgba(0,0,0,.5);
+    transition:transform .2s ease;
+    padding:0;
+  }
+  .video-play:hover{ transform:translate(-50%,-50%) scale(1.08); }
+  .video-parallax iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  @media (max-width:640px){
+    .video-parallax{ height:42vh; min-height:240px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .video-bg{ transform:none !important; }
+  }
 </style>
 </head>
 <body>
+
 <div class="envelope">
   <div class="stamp">
     <div class="stamp-inner">
@@ -150,7 +333,11 @@
       <div class="stamp-label">Friend<br>Somewhere</div>
     </div>
   </div>
-  <div class="postmark"><span>NEW YORK,<br>N.Y.<br>★ ★ ★</span></div>
+
+  <div class="postmark">
+    <span>NEW YORK,<br>N.Y.<br>★ ★ ★</span>
+  </div>
+
   <div class="envelope-flap">
     <div class="flourish-row">
       <svg viewBox="0 0 60 30"><path d="M2 15 C 14 2, 20 2, 30 15 C 40 28, 46 28, 58 15"/><circle cx="30" cy="15" r="2" fill="#b83b47"/><circle cx="15" cy="9" r="1.4" fill="#d9701f"/><circle cx="45" cy="21" r="1.4" fill="#7a2530"/></svg>
@@ -162,6 +349,7 @@
     </div>
   </div>
 </div>
+
 <section aria-label="Follow">
   <div class="insta-cta">
     <a class="insta-btn" href="https://instagram.com/friendsomewhere" target="_blank" rel="noopener">
@@ -170,10 +358,18 @@
     </a>
   </div>
 </section>
+
+<section class="video-parallax" id="video" aria-label="Watch">
+  <div class="video-bg" style="background-image:url('https://img.youtube.com/vi/wi3_zEfXZSQ/maxresdefault.jpg')"></div>
+  <div class="video-overlay"></div>
+  <button class="video-play" aria-label="Play video">▶</button>
+</section>
+
 <section aria-label="Shows" id="shows">
   <div class="eyebrow">Shows</div>
   <div id="shows-list"></div>
 </section>
+
 <section aria-label="Contact" id="contact">
   <div class="eyebrow">Get in touch</div>
   <div class="contact-cta">
@@ -181,15 +377,30 @@
     <a class="contact-email" href="mailto:mark.anselm@gmail.com">hello@friendsomewhere.com</a>
   </div>
 </section>
+
 <footer>Friend Somewhere &nbsp;·&nbsp; Brooklyn, NY</footer>
+
 <script>
+  /*
+    SHOW LIST — edit this array to add/remove shows.
+    Each show:
+      date:       "Aug 2, 2026"
+      withBand:   who you're playing with (leave "" to omit)
+      venue:      venue name
+      city:       "City, ST"
+      ticketUrl:  link to tickets (leave "" to omit the button)
+  */
   const SHOWS = [
     { date: "Jul 18, 2026", withBand: "Without a Net", venue: "Private Event", city: "Mount Kisco, NY", ticketUrl: "" },
     { date: "Aug 27, 2026", withBand: "Busy's Dead Collective", venue: "Cobra Club", city: "Brooklyn, NY", ticketUrl: "" },
   ];
+
   const list = document.getElementById('shows-list');
+
   if (SHOWS.length === 0) {
-    list.innerHTML = `<p class="no-shows">No shows on the books right now — check back soon, or follow on Instagram for the first announcement.</p>`;
+    list.innerHTML = `
+      <p class="no-shows">No shows on the books right now — check back soon, or follow on Instagram for the first announcement.</p>
+    `;
   } else {
     list.innerHTML = SHOWS.map(s => `
       <div class="show">
@@ -203,6 +414,25 @@
       </div>
     `).join('');
   }
+
+  // ===== VIDEO PARALLAX =====
+  const videoBg = document.querySelector('.video-bg');
+  const videoSection = document.querySelector('.video-parallax');
+  function updateVideoParallax(){
+    if (!videoBg || !videoSection) return;
+    const rect = videoSection.getBoundingClientRect();
+    videoBg.style.transform = `translateY(${rect.top * 0.25}px)`;
+  }
+  window.addEventListener('scroll', updateVideoParallax, { passive: true });
+  updateVideoParallax();
+
+  const playBtn = document.querySelector('.video-play');
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      videoSection.innerHTML = `<iframe src="https://www.youtube.com/embed/wi3_zEfXZSQ?autoplay=1&rel=0" title="Friend Somewhere video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  }
 </script>
+
 </body>
 </html>
