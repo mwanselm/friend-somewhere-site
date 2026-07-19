@@ -105,12 +105,13 @@
   .band-name{
     font-family:'Playfair Display', serif;
     font-weight:900;
-    font-size:clamp(2.1rem, 4.2vw, 3.4rem);
+    font-size:clamp(1.7rem, 7.2vw, 3.4rem);
     line-height:1.15;
     color:var(--coral-dark);
     letter-spacing:.5px;
     margin:6px 0 12px;
     text-shadow: 2px 2px 0 rgba(217,112,31,.35);
+    overflow-wrap:break-word;
   }
   .tagline{ font-style:italic; font-size:1.15rem; color:var(--ink); letter-spacing:.5px; margin:0; font-weight:600; }
 
@@ -151,6 +152,7 @@
   .show-main{ flex:1; min-width:200px; }
   .show-venue{ font-size:1.3rem; font-weight:700; }
   .show-with{ font-style:italic; color:var(--ink); font-size:1.05rem; font-weight:600; }
+  .show-with a{ text-decoration:underline; text-underline-offset:2px; }
   .show-city{ color:var(--coral-dark); font-size:1.02rem; font-weight:700; letter-spacing:.3px; }
   .show-tix{
     display:inline-block; margin-top:4px; font-family:'Courier Prime', monospace; font-size:.8rem;
@@ -177,6 +179,10 @@
 
   @media (max-width:640px){
     .blotter{ padding:26px 18px; }
+  }
+  @media (max-width:480px){
+    #header-socials{ flex-direction:column; align-items:center; gap:10px; }
+    #header-socials a{ padding:9px 18px; font-size:.95rem; }
   }
 </style>
 </head>
@@ -233,8 +239,8 @@
 
 <script>
   const SHOWS = [
-    { date: "Jul 18, 2026", withBand: "Without a Net", venue: "Private Event", city: "Mount Kisco, NY", ticketUrl: "" },
-    { date: "Aug 27, 2026", withBand: "Busy's Dead Collective", venue: "Cobra Club", city: "Brooklyn, NY", ticketUrl: "" },
+    { date: "Jul 18, 2026", withBand: "Without a Net", withBandUrl: "https://www.instagram.com/without_a_net_band/", venue: "Private Event", city: "Mount Kisco, NY", ticketUrl: "" },
+    { date: "Aug 27, 2026", withBand: "Busy's Dead Collective", withBandUrl: "https://www.instagram.com/busysdeadcollective/?hl=en", venue: "Cobra Club", city: "Brooklyn, NY", ticketUrl: "" },
   ];
   const list = document.getElementById('shows-list');
   if (SHOWS.length === 0) {
@@ -245,7 +251,7 @@
         <span class="show-date">${s.date}</span>
         <div class="show-main">
           <div class="show-venue">${s.venue}</div>
-          ${s.withBand ? `<div class="show-with">with ${s.withBand}</div>` : ''}
+          ${s.withBand ? `<div class="show-with">with ${s.withBandUrl ? `<a href="${s.withBandUrl}" target="_blank" rel="noopener">${s.withBand}</a>` : s.withBand}</div>` : ''}
           <div class="show-city">${s.city}</div>
           ${s.ticketUrl ? `<a class="show-tix" href="${s.ticketUrl}" target="_blank" rel="noopener">Tickets</a>` : ''}
         </div>
